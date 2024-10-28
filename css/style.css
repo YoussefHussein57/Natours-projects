@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
 0-600px the Phone
 600-900px tablet and phone landscape
@@ -8,6 +9,9 @@ $breakpoint arhument choices:
 -tab-port
 tab-land
 big-desktop
+
+
+ORDER : Base + Typography > general layout + grid > page layout > components
 
 */
 *,
@@ -21,17 +25,17 @@ big-desktop
 html {
   font-size: 62.5%;
 }
-@media (max-width: 75em) {
+@media only screen and (max-width: 75em) {
   html {
     font-size: 56.25%;
   }
 }
-@media (max-width: 56.25em) {
+@media only screen and (max-width: 56.25em) {
   html {
     font-size: 50%;
   }
 }
-@media (min-width: 112.5em) {
+@media only screen and (min-width: 112.5em) {
   html {
     font-size: 75%;
   }
@@ -39,6 +43,16 @@ html {
 
 body {
   box-sizing: border-box;
+  padding: 3rem;
+}
+@media only screen and (max-width: 56.25em) {
+  body {
+    padding: 0rem;
+  }
+}
+body ::selection {
+  background-color: #7ed56f;
+  color: #fff;
 }
 
 .heading-primary {
@@ -61,12 +75,24 @@ body {
 
       */
 }
+@media only screen and (max-width: 37.5em) {
+  .heading-primary--main {
+    letter-spacing: 1rem;
+    font-size: 5rem;
+  }
+}
 .heading-primary--sub {
   display: block;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 1.75rem;
   animation: moveInRight 1s ease-out;
+}
+@media only screen and (max-width: 37.5em) {
+  .heading-primary--sub {
+    letter-spacing: 0.5rem;
+    font-size: 5rem;
+  }
 }
 
 body {
@@ -75,7 +101,6 @@ body {
   /* font-size: 16px; */
   line-height: 1.7;
   color: #777;
-  padding: 3rem;
 }
 
 .heading-secondary {
@@ -88,6 +113,16 @@ body {
   color: transparent;
   letter-spacing: 2px;
   transition: all 0.2s;
+}
+@media only screen and (max-width: 56.25em) {
+  .heading-secondary {
+    font-size: 3rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .heading-secondary {
+    font-size: 2.5rem;
+  }
 }
 .heading-secondary:hover {
   transform: skewY(2deg) skewX(15deg) scale(1.1);
@@ -157,6 +192,11 @@ body {
 .u-margin-bottom-medium {
   margin-bottom: 2rem !important;
 }
+@media only screen and (max-width: 56.25em) {
+  .u-margin-bottom-medium {
+    margin-bottom: 1.5rem !important;
+  }
+}
 
 .u-margin-bottom-big {
   margin-bottom: 8rem !important;
@@ -170,105 +210,181 @@ body {
   margin-top: 10rem !important;
 }
 
+.btn {
+  /* Styles for all button states (normal, link, and visited) */
+  /* Hover effect for the button */
+  /* Active and focus states for accessibility */
+  /* White button modifier */
+  /* Green button modifier */
+  /* After pseudo-element for hover effects */
+  /* Animated button modifier */
+}
 .btn, .btn:link, .btn:visited {
+  /* Transforms text to uppercase */
   text-transform: uppercase;
+  /* Removes default text decoration */
   text-decoration: none;
+  /* Adds padding inside the button */
   padding: 1.5rem 4rem;
+  /* Makes the button inline-block to allow padding */
   display: inline-block;
+  /* Gives the button rounded corners */
   border-radius: 10rem;
+  /* Adds a smooth transition effect */
   transition: all 0.2s;
+  /* Sets the position relative to enable pseudo-elements positioning */
   position: relative;
+  /* Sets the font size of the button text */
   font-size: 1.6rem;
+  /* Removes the default border on buttons */
   border: none;
-  cursor: point er;
+  /* Changes the cursor to a pointer on hover */
+  cursor: pointer;
 }
 .btn:hover {
+  /* Slightly moves the button up for a 3D effect */
   transform: translateY(-0.3rem);
+  /* Adds a shadow around the button for a floating effect */
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 .btn:hover::after {
+  /* Expands and fades out the after pseudo-element on hover */
   transform: scaleX(1.4) scaleY(1.6);
   opacity: 0;
 }
 .btn:active, .btn:focus {
+  /* Removes the outline for a cleaner look */
   outline: none;
+  /* Slightly reduces the height of the shadow on click */
   transform: translateY(-1px);
+  /* Reduces shadow for a pressed effect */
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 .btn--white {
+  /* White background and dark gray text */
   background-color: #fff;
   color: #777;
 }
 .btn--white::after {
+  /* White background for the after pseudo-element */
   background-color: #fff;
 }
 .btn--green {
+  /* Primary green background with white text */
   background-color: #7ed56f;
   color: #fff;
 }
 .btn--green::after {
+  /* Matches after pseudo-element background to primary color */
   background-color: #7ed56f;
 }
 .btn::after {
+  /* Empty content to create a custom background */
   content: "";
+  /* Inline-block to take up space inside button */
   display: inline-block;
+  /* Matches button dimensions for full coverage */
   height: 100%;
   width: 100%;
+  /* Rounded corners */
   border-radius: 100px;
+  /* Positioned absolutely to cover button */
   position: absolute;
   top: 0;
   left: 0;
+  /* Places pseudo-element behind button text */
   z-index: -1;
+  /* Smooth transition for hover effects */
   transition: all 0.4s;
 }
 .btn--animated {
+  /* Applies a custom animation */
   animation: moveInBottom 0.5s ease-out 0.75s;
+  /* Ensures animation begins before the initial state */
   animation-fill-mode: backwards;
 }
 
+/* Styles for a text-only button */
+.btn-text {
+  /* Link and visited states for text button */
+  /* Hover state for text button */
+  /* Active state for text button */
+}
 .btn-text:link, .btn-text:visited {
+  /* Sets the default font size */
   font-size: 1.6rem;
+  /* Primary color for text */
   color: #7ed56f;
+  /* Displays inline-block to apply padding */
   display: inline-block;
+  /* Removes underline from text */
   text-decoration: none;
+  /* Adds a border below text for a button look */
   border-bottom: 1px solid #7ed56f;
+  /* Adds small padding for spacing */
   padding: 3px;
+  /* Smooth transition for hover effects */
   transition: all 0.2s;
 }
 .btn-text:hover {
+  /* Background and text color switch for emphasis */
   background-color: #7ed56f;
   color: #fff;
+  /* Adds a light shadow for a floating effect */
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  /* Moves the text button up slightly */
   transform: translateY(-2px);
 }
 .btn-text:active {
+  /* Reduces shadow and resets position */
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   transform: translateY(0);
 }
 
 .card {
+  /* Defines the 3D perspective for child elements to enable flip animation */
   perspective: 150rem;
   -moz-perspective: 150rem;
+  /* Positions the card relative for absolute positioning of its sides */
   position: relative;
+  /* Sets a fixed height for the card */
   height: 52rem;
+  /* Flip effect: rotates front and back sides on hover */
+  /* Styles for the card picture */
+  /* Heading styles for the card */
+  /* Details section with list items for card information */
+  /* Call-to-action (CTA) section */
+  /* Price box styles within CTA */
+  /* Responsive adjustments for tablets and devices without hover */
 }
 .card__side {
+  /* Ensures each side of the card has the same height as the card container */
   height: 52rem;
+  /* Smooth transition effect for the flip animation */
   transition: all 0.8s ease;
+  /* Positions each side absolutely within the card container */
   position: absolute;
   top: 0;
   left: 0;
+  /* Makes each side take the full width of the card container */
   width: 100%;
+  /* Hides the back side of the card when it is rotated */
   backface-visibility: hidden;
+  /* Gives rounded corners to each card side */
   border-radius: 3px;
+  /* Hides overflow to prevent elements from extending outside card edges */
   overflow: hidden;
+  /* Adds a subtle shadow around each card side */
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
 }
 .card__side--front {
+  /* Background color for the front side of the card */
   background-color: #fff;
 }
 .card__side--back {
+  /* Rotates the back side by 180 degrees to hide it initially */
   transform: rotateY(-180deg);
+  /* Background gradient styles for different card types */
 }
 .card__side--back-1 {
   background-image: linear-gradient(to right bottom, #ffb900, #ff7730);
@@ -286,12 +402,18 @@ body {
   transform: rotateY(0);
 }
 .card__picture {
+  /* Ensures the background image covers the entire picture area */
   background-size: cover;
+  /* Applies a blend mode to mix the image with a background color */
   background-blend-mode: screen;
+  /* Sets the height of the picture */
   height: 23rem;
+  /* Clips the image to create a unique shape */
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  /* Rounded corners */
   border-radius: 3px;
+  /* Different background images and gradients for each card variant */
 }
 .card__picture--1 {
   background-image: url("../../img/nat-5.jpg"), linear-gradient(to right bottom, #ffb900, #ff7730);
@@ -303,20 +425,25 @@ body {
   background-image: url("../../img/nat-7.jpg"), linear-gradient(to right bottom, #2998ff, #5643fa);
 }
 .card__heading {
+  /* Sets font properties for the heading text */
   font-size: 2.8rem;
   font-weight: 300;
   text-transform: uppercase;
   text-align: right;
   color: #fff;
+  /* Positions the heading within the card */
   position: absolute;
   top: 12rem;
   right: 2rem;
   width: 75%;
 }
 .card__heading-span {
+  /* Padding around the heading span text */
   padding: 1rem 1.5rem;
+  /* Ensures box-decoration is clipped correctly on wrapping text */
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
+  /* Background gradients for each card heading variant */
 }
 .card__heading-span--1 {
   background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85));
@@ -328,22 +455,28 @@ body {
   background-image: linear-gradient(to right bottom, rgba(41, 152, 255, 0.85), rgba(86, 67, 250, 0.85));
 }
 .card__details {
+  /* Padding inside details area */
   padding: 3rem;
 }
 .card__details ul {
+  /* Removes default list styles */
   list-style: none;
+  /* Centers the list within the details area */
   width: 80%;
   margin: 0 auto;
 }
 .card__details li {
+  /* Centers and styles each list item */
   text-align: center;
   font-size: 1.5rem;
   padding: 1rem;
+  /* Adds a border to all but the last list item */
 }
 .card__details li:not(:last-child) {
   border-bottom: 1px solid #eee;
 }
 .card__cta {
+  /* Centers the CTA box within the card */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -357,165 +490,381 @@ body {
   margin-bottom: 8rem;
 }
 .card__price-only {
+  /* Styles for "only" text in price box */
   font-size: 1.4rem;
   text-transform: uppercase;
   font-weight: 100;
 }
 .card__price-value {
+  /* Large font for the main price display */
   font-size: 6rem;
   font-weight: 100;
 }
+@media only screen and (max-width: 56.25em), only screen and (hover: none) {
+  .card {
+    /* Adjusts card height and background for smaller screens */
+    height: auto;
+    border-radius: 3px;
+    background-color: #fff;
+    /* Disables the flip effect for smaller screens */
+    /* Reduces spacing in price box for smaller screens */
+    /* Adjusts font size of the price on smaller screens */
+  }
+  .card__side {
+    /* Sets side height to auto and removes 3D rotation */
+    height: auto;
+    position: relative;
+  }
+  .card__side--back {
+    /* Flattens the card back side for smaller screens */
+    transform: rotateY(0);
+    /* Clips back side for a unique shape on mobile */
+    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+  }
+  .card:hover .card__side--front {
+    transform: rotateY(0);
+  }
+  .card__cta {
+    /* Centers and sizes the CTA area on smaller screens */
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translate(0);
+    width: 100%;
+    padding: 7rem 4rem 4rem;
+  }
+  .card__price-box {
+    margin-bottom: 3rem;
+  }
+  .card__price-value {
+    font-size: 4rem;
+  }
+}
 
 .composition {
+  /* Sets the composition container as relative to position child elements absolutely within it */
   position: relative;
+  /* Hover effect for the entire composition container */
 }
 .composition__photo {
+  /* Sets the default width of each photo to 55% of the container */
   width: 55%;
+  /* Adds a shadow to each photo for a lifted effect */
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+  /* Rounds the photo's corners slightly */
   border-radius: 2px;
+  /* Positions each photo absolutely within the composition container */
   position: absolute;
+  /* Places each photo above other elements with a lower z-index */
   z-index: 10;
+  /* Adds a transition effect for smooth scaling and shadow changes */
   transition: all 0.2s;
+  /* Offsets the outline for a bordered effect on hover */
   outline-offset: 2rem;
+  /* Responsive adjustments for tablet-sized screens */
+  /* Positioning for the first photo in the composition */
+  /* Positioning for the second photo in the composition */
+  /* Positioning for the third photo in the composition */
+  /* Hover effect for individual photos */
+}
+@media only screen and (max-width: 56.25em) {
+  .composition__photo {
+    /* Floats the photos to the left on smaller screens */
+    float: left;
+    /* Changes to relative positioning for better flow */
+    position: relative;
+    /* Adjusts width to one-third of the container on tablets */
+    width: 33.3333333%;
+    /* Reduces shadow for a less intense effect on smaller screens */
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2);
+  }
 }
 .composition__photo--p1 {
+  /* Positions photo on the left side and shifts it slightly up */
   left: 0;
   top: -2rem;
+  /* Tablet view adjustments: resets top position and scales up */
+}
+@media only screen and (max-width: 56.25em) {
+  .composition__photo--p1 {
+    top: 0;
+    transform: scale(1.2);
+  }
 }
 .composition__photo--p2 {
+  /* Positions photo on the right side and shifts it slightly down */
   right: 0;
   top: 2rem;
+  /* Tablet view adjustments: shifts top position up and scales up */
+}
+@media only screen and (max-width: 56.25em) {
+  .composition__photo--p2 {
+    top: -1rem;
+    transform: scale(1.3);
+  }
 }
 .composition__photo--p3 {
+  /* Positions photo towards the center and shifts it down */
   left: 20%;
   top: 10rem;
+  /* Tablet view adjustments: aligns to the left and scales up */
+}
+@media only screen and (max-width: 56.25em) {
+  .composition__photo--p3 {
+    top: 1rem;
+    left: 0;
+    transform: scale(1.1);
+  }
 }
 .composition__photo:hover {
+  /* Adds an outline around the photo on hover */
   outline: 1.5rem solid #7ed56f;
+  /* Scales up and lifts the photo slightly */
   transform: scale(1.05) translateY(-0.5rem);
+  /* Increases shadow for a more prominent 3D effect */
   box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+  /* Raises z-index to make hovered photo appear on top */
   z-index: 20;
 }
 .composition:hover .composition__photo:not(:hover) {
+  /* Slightly scales down non-hovered photos to emphasize the hovered one */
   transform: scale(0.95);
 }
 
 .feature-box {
+  /* Semi-transparent white background for the feature box */
   background-color: rgba(255, 255, 255, 0.8);
+  /* Sets the font size for content within the feature box */
   font-size: 1.5rem;
+  /* Adds padding around the content inside the feature box */
   padding: 2.5rem;
+  /* Centers the text within the feature box */
   text-align: center;
+  /* Rounds the corners of the feature box */
   border-radius: 3px;
+  /* Adds a shadow for a 3D effect */
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  /* Smooth transition for transform effects */
   transition: transform 0.2s;
+  /* Responsive padding adjustment for tablets */
+  /* Hover effect for the entire feature box */
+}
+@media only screen and (max-width: 56.25em) {
+  .feature-box {
+    padding: 2rem;
+  }
 }
 .feature-box__icon {
+  /* Sets a large font size for the icon */
   font-size: 6rem;
+  /* Adds spacing below the icon */
   margin-bottom: 0.5rem;
+  /* Displays the icon inline-block to apply custom styles */
   display: inline-block;
+  /* Adds a gradient as the icon’s background */
   background-image: linear-gradient(to right, #55c57a, #28b485);
+  /* Clips the background to the text to create a gradient text effect */
   -webkit-background-clip: text;
+  /* Makes the text transparent, revealing the gradient */
   color: transparent;
+  /* Responsive adjustment to remove the margin below the icon on tablets */
+}
+@media only screen and (max-width: 56.25em) {
+  .feature-box__icon {
+    margin-bottom: 0;
+  }
 }
 .feature-box:hover {
+  /* Intensifies the shadow for a more pronounced 3D effect */
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.8);
+  /* Moves the box up and slightly scales it for a floating effect */
   transform: translateY(-1.5rem) scale(1.03);
 }
 
 .story {
+  /* Sets the width of the story container to 75% and centers it */
   width: 75%;
   margin: 0 auto;
+  /* Adds a shadow for a floating effect */
   box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+  /* Semi-transparent white background */
   background-color: rgba(255, 255, 255, 0.6);
+  /* Rounds the corners */
   border-radius: 3px;
+  /* Adds padding around content */
   padding: 6rem;
   padding-left: 9rem;
+  /* Sets the font size for text inside the story */
   font-size: 1.6rem;
+  /* Skews the story box to the left */
   transform: skewX(-12deg);
+  /* Responsive adjustments for tablet-sized screens */
+  /* Resets skew for smaller phone screens */
+  /* Shows caption on hover */
+  /* Hover effect for image */
+}
+@media only screen and (max-width: 56.25em) {
+  .story {
+    /* Full-width for smaller screens */
+    width: 100%;
+    /* Adjusts padding */
+    padding-left: 7rem;
+    padding: 4rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .story {
+    transform: skewX(0);
+  }
 }
 .story__shape {
+  /* Sets dimensions for the shape that holds the image */
   width: 15rem;
   height: 15rem;
+  /* Floats shape to the left of the text */
   float: left;
+  /* Makes the shape circular and positions it inside the container */
   -webkit-shape-outside: circle(50% at 50% 50%);
   shape-outside: circle(50% at 50% 50%);
+  /* Clips the image to the circular shape */
   -webkit-clip-path: circle(50% at 50% 50%);
   clip-path: circle(50% at 50% 50%);
+  /* Moves the shape slightly to the left and applies skew */
   transform: translateX(-3rem) skewX(12deg);
   position: relative;
+  /* Resets skew on smaller screens */
+}
+@media only screen and (max-width: 37.5em) {
+  .story__shape {
+    transform: translateX(-2rem) skewX(0);
+  }
 }
 .story__img {
+  /* Makes the image fill the shape's height */
   height: 100%;
+  /* Translates and scales the image */
   transform: translateX(-4rem) scale(1.4);
+  /* Smooth transition effect for image transformations */
   transition: all 0.5s;
 }
 .story__text {
+  /* Applies skew to text within the story container */
   transform: skewX(12deg);
+  /* Resets skew on smaller screens */
+}
+@media only screen and (max-width: 37.5em) {
+  .story__text {
+    transform: skewX(0);
+  }
 }
 .story__caption {
+  /* Positions caption within the shape container */
   position: absolute;
   top: 50%;
   left: 50%;
+  /* Centers caption within the shape */
   transform: translate(-50%, 20%);
+  /* Makes text uppercase, white, and centered */
   text-transform: uppercase;
   color: #fff;
   font-size: 1.7rem;
   text-align: center;
+  /* Initially hidden with zero opacity */
   opacity: 0;
+  /* Smooth transition for hover effect */
   transition: all 0.5s;
+  /* Hides backface to avoid display issues on rotation */
   backface-visibility: hidden;
 }
 .story:hover .story__caption {
+  /* Fully visible and centered on hover */
   opacity: 1;
   transform: translate(-50%, -50%);
 }
 .story:hover .story__img {
+  /* Resets scaling and adds blur and dimming effect */
   transform: translateX(-4rem) scale(1);
   filter: blur(3px) brightness(80%);
 }
 
 .bg-video {
+  /* Sets the video container to an absolute position relative to its nearest positioned ancestor */
   position: absolute;
+  /* Positions the container at the top-left corner */
   top: 0;
   left: 0;
+  /* Makes the video container take up the full height and width of its parent element */
   height: 100%;
   width: 100%;
+  /* Places the video container behind other elements with a lower z-index */
   z-index: -1;
+  /* Sets the opacity to 15%, making the video appear as a faint background */
   opacity: 0.15;
 }
 .bg-video__content {
+  /* Ensures the video content fills the container's height and width */
   height: 100%;
   width: 100%;
+  /* Maintains the video's aspect ratio while covering the entire container */
   object-fit: cover;
 }
 
+.form {
+  /* Adds bottom margin to all form groups except the last one */
+  /* Animates label when the input's placeholder is shown */
+  /* Hides radio input elements */
+  /* Shows the inner circle of the radio button when selected */
+}
 .form__group:not(:last-child) {
   margin-bottom: 2rem;
 }
 .form__label {
+  /* Styles for form labels */
   font-size: 1.2rem;
   font-weight: 700;
   margin-left: 2rem;
   margin-top: 0.7rem;
+  /* Displays labels as block elements */
   display: block;
+  /* Smooth transition for label animations */
   transition: all 0.3s;
 }
 .form__input {
+  /* Adds padding inside the input field */
   padding: 1.5rem 2rem;
+  /* Inherits font styles from parent */
   font-family: inherit;
   color: inherit;
+  /* Sets the input's font size */
   font-size: 1.5rem;
+  /* Rounds the corners slightly */
   border-radius: 2px;
+  /* Semi-transparent white background */
   background-color: rgba(255, 255, 255, 0.5);
+  /* Removes default border and adds a transparent bottom border */
   border: none;
   border-bottom: 3px solid transparent;
+  /* Sets input width to 90% */
   width: 90%;
+  /* Displays input as a block element */
   display: block;
+  /* Smooth transition for border and shadow changes */
   transition: all 0.3s;
+  /* Responsive input width adjustment for tablets */
+  /* Changes bottom border color if input is invalid */
+  /* Placeholder styling */
+}
+@media only screen and (max-width: 56.25em) {
+  .form__input {
+    width: 100%;
+  }
 }
 .form__input:focus {
+  /* Removes default outline */
   outline: none;
+  /* Adds shadow on focus */
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  /* Changes bottom border color on focus */
   border-bottom: 3px solid #7ed56f;
 }
 .form__input:focus:invalid {
@@ -525,6 +874,7 @@ body {
   color: #999;
 }
 .form__input:placeholder-shown + .form__label {
+  /* Makes label invisible and shifts it up */
   opacity: 0;
   visibility: hidden;
   transform: translateY(-4rem);
@@ -533,37 +883,57 @@ body {
   display: none;
 }
 .form__radio-group {
+  /* Sets width and displays each radio group inline */
   width: 49%;
   display: inline-block;
+  /* Makes radio labels uppercase */
   text-transform: uppercase;
+  /* Adjusts width and margin on tablets */
+}
+@media only screen and (max-width: 56.25em) {
+  .form__radio-group {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
 }
 .form__radio-label {
+  /* Font size for radio labels */
   font-size: 1.6rem;
+  /* Changes cursor to pointer */
   cursor: pointer;
+  /* Positions label relative to place radio button correctly */
   position: relative;
+  /* Adds left padding to create space for radio button */
   padding-left: 4.5rem;
 }
 .form__radio-button {
+  /* Sets size and border for custom radio button */
   height: 3rem;
   width: 3rem;
   border: 5px solid #7ed56f;
+  /* Makes the button round */
   border-radius: 50%;
+  /* Positions it relative to the label */
   display: inline-block;
   position: absolute;
   left: 0;
   top: -0.4rem;
 }
 .form__radio-button::after {
+  /* Creates inner circle for selected state */
   content: "";
   display: block;
   height: 1.3rem;
   width: 1.3rem;
+  /* Centers inner circle within button */
   border-radius: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  /* Primary color fill for inner circle */
   background-color: #7ed56f;
+  /* Hidden by default; visible only when checked */
   opacity: 0;
   transition: opacity 0.2s;
 }
@@ -572,74 +942,117 @@ body {
 }
 
 .popup {
-  background-color: rgba(0, 0, 0, 0.8);
+  /* Semi-transparent black background for popup overlay */
+  background-color: rgba(0, 0, 0, 0.3);
+  /* Shadow for added depth effect */
   box-shadow: 1rem 2rem 3rem #000;
+  /* Full-screen height and width */
   height: 100vh;
   width: 100%;
+  /* Fixes the popup to the viewport */
   position: fixed;
   top: 0;
   left: 0;
+  /* Sets a high z-index to overlay the popup above other content */
   z-index: 9999;
+  /* Initially hidden, with opacity and visibility to control appearance */
   opacity: 0;
   visibility: hidden;
+  /* Smooth transition effect for opacity and visibility */
   transition: all 0.3s;
+  /* Blurs the background content behind the popup */
+  backdrop-filter: blur(10px);
+  /* When the popup is targeted (e.g., through an anchor link), display it */
 }
 .popup__content {
+  /* Centers the popup content using a mixin (e.g., top: 50%; left: 50%;) */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  /* Width of the content box relative to the viewport */
   width: 75%;
+  /* White background for popup content */
   background-color: #fff;
+  /* Adds a subtle shadow for a 3D effect */
   box-shadow: 0rem 2rem 4rem rgba(0, 0, 0, 0.2);
+  /* Rounds the corners */
   border-radius: 3px;
+  /* Displays content as a table to allow table-cell layout for children */
   display: table;
+  /* Ensures any overflowing content remains inside the box */
   overflow: hidden;
+  /* Initially hidden and scaled down */
   opacity: 0;
   transform: translate(-50%, -50%) scale(0);
+  /* Delayed transition for a fade-in and scale effect */
   transition: all 0.4s 0.2s;
 }
 .popup__left {
+  /* Left section takes up one-third of the width */
   width: 33.333333%;
+  /* Displays left section as a table cell for side-by-side alignment */
   display: table-cell;
 }
 .popup__right {
+  /* Right section takes up two-thirds of the width */
   width: 65%;
+  /* Aligns content to the middle of the cell */
   display: table-cell;
   vertical-align: middle;
+  /* Padding for spacing around the content */
   padding: 3rem 5rem;
 }
 .popup__img {
+  /* Ensures images are block elements and take full width of the container */
   display: block;
   width: 100%;
 }
 .popup__text {
+  /* Sets font size for text in the popup */
   font-size: 1.4rem;
+  /* Bottom margin to separate from other content */
   margin-bottom: 4rem;
+  /* Creates two columns for text layout */
   column-count: 2;
+  /* Space between columns */
   column-gap: 4rem;
+  /* Adds a rule between columns */
   column-rule: 1px solid #eee;
+  /* Enables automatic hyphenation for better text flow */
   hyphens: auto;
 }
 .popup:target .popup__content {
+  /* Fully opaque and scaled to original size */
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
 }
 .popup:target {
+  /* Shows the popup background overlay */
   opacity: 1;
   visibility: visible;
 }
+.popup__close {
+  /* Styling for the close button in both link and visited states */
+}
 .popup__close:link, .popup__close:visited {
+  /* Dark gray color for the close icon */
   color: #777;
+  /* Positions the close icon in the top-right corner */
   position: absolute;
   top: 2.5rem;
   right: 2.5rem;
+  /* Sets the font size for the close icon */
   font-size: 3rem;
+  /* Removes underline */
   text-decoration: none;
+  /* Ensures the close button appears inline */
   display: inline-block;
+  /* Keeps line height compact */
   line-height: 1;
 }
 .popup__close:hover {
+  /* Changes color on hover for a highlighted effect */
   color: #7ed56f;
 }
 
@@ -650,6 +1063,11 @@ body {
   background-position: top;
   position: relative;
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+@media only screen and (max-width: 37.5em) {
+  .header {
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
 }
 .header__logo-box {
   position: absolute;
@@ -674,6 +1092,17 @@ body {
 .row:not(:last-child) {
   margin-bottom: 8rem;
 }
+@media only screen and (max-width: 56.25em) {
+  .row:not(:last-child) {
+    margin-bottom: 8rem;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  .row {
+    max-width: 50rem;
+    padding: 0 3rem;
+  }
+}
 .row::after {
   content: "";
   display: table;
@@ -685,6 +1114,13 @@ body {
 }
 .row [class^=col-]:not(:last-child) {
   margin-right: 6rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .row [class^=col-] {
+    width: 100% !important;
+    margin-right: 0;
+    margin-bottom: 8rem;
+  }
 }
 .row .col-1-of-2 {
   width: calc((100% - 6rem) / 2);
@@ -713,9 +1149,14 @@ body {
   font-size: 1.4rem;
   color: #f7f7f7;
 }
+@media only screen and (max-width: 56.25em) {
+  .footer {
+    padding: 8rem 0;
+  }
+}
 .footer__logo-box {
   text-align: center;
-  margin-bottom: 8rem;
+  margin-bottom: 6rem;
 }
 .footer__logo {
   width: 15rem;
@@ -725,6 +1166,12 @@ body {
   border-top: 1px solid #eee;
   padding-top: 2rem;
   display: inline-block;
+}
+@media only screen and (max-width: 56.25em) {
+  .footer__navigation {
+    width: 100%;
+    text-align: center;
+  }
 }
 .footer__list {
   list-style: none;
@@ -754,6 +1201,12 @@ body {
   width: 80%;
   float: right;
 }
+@media only screen and (max-width: 56.25em) {
+  .footer__copyright {
+    width: 100%;
+    float: none;
+  }
+}
 
 .navigation__checkbox {
   display: none;
@@ -771,6 +1224,12 @@ body {
   text-align: center;
   cursor: pointer;
 }
+@media only screen and (max-width: 56.25em) {
+  .navigation__button {
+    top: 4rem;
+    right: 4rem;
+  }
+}
 .navigation__background {
   height: 6rem;
   width: 6rem;
@@ -781,6 +1240,18 @@ body {
   background-image: radial-gradient(#55c57a, #28b485);
   z-index: 1000;
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+@media only screen and (max-width: 56.25em) {
+  .navigation__background {
+    top: 4.5rem;
+    right: 4.5rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .navigation__background {
+    top: 4.5rem;
+    right: 4.5rem;
+  }
 }
 .navigation__nav {
   height: 100vh;
@@ -876,6 +1347,11 @@ body {
   padding: 25rem 0;
   margin-top: -20vh;
 }
+@media only screen and (max-width: 56.25em) {
+  .section-about {
+    padding: 20rem 0;
+  }
+}
 
 .section-features {
   padding: 20rem 0;
@@ -887,16 +1363,31 @@ body {
 .section-features > * {
   transform: skewY(7deg);
 }
+@media only screen and (max-width: 56.25em) {
+  .section-features {
+    padding: 10rem 0;
+  }
+}
 
 .section-tours {
   background-color: #f7f7f7;
   padding: 25rem 0 15rem 0;
   margin-top: -15rem;
 }
+@media only screen and (max-width: 56.25em) {
+  .section-tours {
+    padding: 20rem 0 10rem 0;
+  }
+}
 
 .section-stories {
   position: relative;
   padding: 15rem 0;
+}
+@media only screen and (max-width: 56.25em) {
+  .section-stories {
+    padding: 10rem 0;
+  }
 }
 
 .section-book {
@@ -909,11 +1400,32 @@ body {
   background-size: 100%;
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
-  height: 50rem;
+}
+@media only screen and (max-width: 75em) {
+  .book {
+    background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 65%, transparent 65%), url(../../img/nat-10.jpg);
+    background-size: cover;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  .book {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%), url(../../img/nat-10.jpg);
+    background-size: cover;
+  }
 }
 .book__form {
   width: 50%;
   padding: 6rem;
+}
+@media only screen and (max-width: 75em) {
+  .book__form {
+    width: 65%;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  .book__form {
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,40 +1,64 @@
-.card{
+.card {
+    /* Defines the 3D perspective for child elements to enable flip animation */
     perspective: 150rem;
     -moz-perspective: 150rem;
+
+    /* Positions the card relative for absolute positioning of its sides */
     position: relative;
+
+    /* Sets a fixed height for the card */
     height: 52rem;
-    &__side{
+
+    &__side {
+        /* Ensures each side of the card has the same height as the card container */
         height: 52rem;
-        transition: all .8s ease;
+
+        /* Smooth transition effect for the flip animation */
+        transition: all 0.8s ease;
+
+        /* Positions each side absolutely within the card container */
         position: absolute;
         top: 0;
         left: 0;
+
+        /* Makes each side take the full width of the card container */
         width: 100%;
+
+        /* Hides the back side of the card when it is rotated */
         backface-visibility: hidden;
+
+        /* Gives rounded corners to each card side */
         border-radius: 3px;
+
+        /* Hides overflow to prevent elements from extending outside card edges */
         overflow: hidden;
-        box-shadow: 0 1.5rem 4rem rgba($color-black , .15);
 
-        &--front{
+        /* Adds a subtle shadow around each card side */
+        box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+        &--front {
+            /* Background color for the front side of the card */
             background-color: $color-white;
-            
         }
-        &--back{
-            transform: rotateY(-180deg);
-            &-1{
-                background-image: linear-gradient(to right bottom ,$color-secondary-light,$color-secondary-dark);
-            }
-            &-2{
-                background-image: linear-gradient(to right bottom ,$color-primary-light,$color-primary-dark);
-            }
-            &-3{
-                background-image: linear-gradient(to right bottom ,$color-tertiary-light,$color-tertiary-dark);
-            }
-        }
-     
-    }
-    
 
+        &--back {
+            /* Rotates the back side by 180 degrees to hide it initially */
+            transform: rotateY(-180deg);
+
+            /* Background gradient styles for different card types */
+            &-1 {
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+            &-2 {
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+            }
+            &-3 {
+                background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+            }
+        }
+    }
+
+    /* Flip effect: rotates front and back sides on hover */
     &:hover &__side--front {
         transform: rotateY(180deg);
     }
@@ -42,83 +66,102 @@
         transform: rotateY(0);
     }
 
-
-       // front side styling
-       &__picture {
+    /* Styles for the card picture */
+    &__picture {
+        /* Ensures the background image covers the entire picture area */
         background-size: cover;
+
+        /* Applies a blend mode to mix the image with a background color */
         background-blend-mode: screen;
+
+        /* Sets the height of the picture */
         height: 23rem;
-        -webkit-clip-path: polygon(0 0 , 100% 0, 100% 85%, 0 100%);
-        clip-path: polygon(0 0 , 100% 0, 100% 85%, 0 100%);
+
+        /* Clips the image to create a unique shape */
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+        /* Rounded corners */
         border-radius: 3px;
+
+        /* Different background images and gradients for each card variant */
         &--1 {
-            background-image: url('../../img/nat-5.jpg') ,linear-gradient(to right bottom ,$color-secondary-light,$color-secondary-dark);
+            background-image: url('../../img/nat-5.jpg'), linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
         }
         &--2 {
-            background-image: url('../../img/nat-6.jpg') ,linear-gradient(to right bottom ,$color-primary-light,$color-primary-dark);
+            background-image: url('../../img/nat-6.jpg'), linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
         }
- 
         &--3 {
-            background-image: url('../../img/nat-7.jpg') ,linear-gradient(to right bottom ,$color-tertiary-light,$color-tertiary-dark);
+            background-image: url('../../img/nat-7.jpg'), linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
         }
- 
- 
     }
 
-    &__heading{
+    /* Heading styles for the card */
+    &__heading {
+        /* Sets font properties for the heading text */
         font-size: 2.8rem;
         font-weight: 300;
         text-transform: uppercase;
         text-align: right;
         color: $color-white;
+
+        /* Positions the heading within the card */
         position: absolute;
-        top: 12rem ;
+        top: 12rem;
         right: 2rem;
         width: 75%;
-
     }
 
-    &__heading-span{
+    &__heading-span {
+        /* Padding around the heading span text */
         padding: 1rem 1.5rem;
+
+        /* Ensures box-decoration is clipped correctly on wrapping text */
         -webkit-box-decoration-break: clone;
         box-decoration-break: clone;
-        &--1{
-            background-image: linear-gradient(to right bottom ,
-            rgba($color-secondary-light,.85),
-            rgba($color-secondary-dark, .85));
+
+        /* Background gradients for each card heading variant */
+        &--1 {
+            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, 0.85), rgba($color-secondary-dark, 0.85));
         }
-        &--2{
-            background-image: linear-gradient(to right bottom ,
-            rgba($color-primary-light,.85),
-            rgba($color-primary-dark, .85));
+        &--2 {
+            background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.85), rgba($color-primary-dark, 0.85));
         }
-        &--3{
-            background-image: linear-gradient(to right bottom ,
-            rgba($color-tertiary-light,.85),
-            rgba($color-tertiary-dark, .85));
+        &--3 {
+            background-image: linear-gradient(to right bottom, rgba($color-tertiary-light, 0.85), rgba($color-tertiary-dark, 0.85));
         }
     }
 
+    /* Details section with list items for card information */
     &__details {
+        /* Padding inside details area */
         padding: 3rem;
-        ul{
+
+        ul {
+            /* Removes default list styles */
             list-style: none;
+
+            /* Centers the list within the details area */
             width: 80%;
             margin: 0 auto;
         }
+
         li {
+            /* Centers and styles each list item */
             text-align: center;
             font-size: 1.5rem;
             padding: 1rem;
 
-            &:not(:last-child){
-                border-bottom: 1px solid $color-grey-light-2 ;
+            /* Adds a border to all but the last list item */
+            &:not(:last-child) {
+                border-bottom: 1px solid $color-grey-light-2;
             }
         }
     }
 
-
-    &__cta{
+    /* Call-to-action (CTA) section */
+    &__cta {
+        /* Centers the CTA box within the card */
         position: absolute;
         top: 50%;
         left: 50%;
@@ -128,22 +171,67 @@
         color: $color-white;
     }
 
-    &__price-box{
+    /* Price box styles within CTA */
+    &__price-box {
         text-align: center;
         margin-bottom: 8rem;
-
     }
-    &__price-only{
+    &__price-only {
+        /* Styles for "only" text in price box */
         font-size: 1.4rem;
         text-transform: uppercase;
         font-weight: 100;
-
     }
-    &__price-value{
+    &__price-value {
+        /* Large font for the main price display */
         font-size: 6rem;
         font-weight: 100;
     }
 
+    /* Responsive adjustments for tablets and devices without hover */
+    @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+        /* Adjusts card height and background for smaller screens */
+        height: auto;
+        border-radius: 3px;
+        background-color: $color-white;
+
+        &__side {
+            /* Sets side height to auto and removes 3D rotation */
+            height: auto;
+            position: relative;
+
+            &--back {
+                /* Flattens the card back side for smaller screens */
+                transform: rotateY(0);
+
+                /* Clips back side for a unique shape on mobile */
+                clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+            }
+        }
+
+        /* Disables the flip effect for smaller screens */
+        &:hover &__side--front {
+            transform: rotateY(0);
+        }
+
+        &__cta {
+            /* Centers and sizes the CTA area on smaller screens */
+            position: relative;
+            top: 0;
+            left: 0;
+            transform: translate(0);
+            width: 100%;
+            padding: 7rem 4rem 4rem;
+        }
+
+        /* Reduces spacing in price box for smaller screens */
+        &__price-box {
+            margin-bottom: 3rem;
+        }
+
+        /* Adjusts font size of the price on smaller screens */
+        &__price-value {
+            font-size: 4rem;
+        }
+    }
 }
-
-

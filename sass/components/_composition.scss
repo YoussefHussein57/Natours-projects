@@ -1,38 +1,103 @@
-.composition{
+.composition {
+    /* Sets the composition container as relative to position child elements absolutely within it */
     position: relative;
-    &__photo{
+
+    &__photo {
+        /* Sets the default width of each photo to 55% of the container */
         width: 55%;
-        box-shadow: 0 1.5rem 4rem rgba($color-black , .4);
-        border-radius: 2px ;
+
+        /* Adds a shadow to each photo for a lifted effect */
+        box-shadow: 0 1.5rem 4rem rgba($color-black, 0.4);
+
+        /* Rounds the photo's corners slightly */
+        border-radius: 2px;
+
+        /* Positions each photo absolutely within the composition container */
         position: absolute;
+
+        /* Places each photo above other elements with a lower z-index */
         z-index: 10;
-        transition: all .2s;
+
+        /* Adds a transition effect for smooth scaling and shadow changes */
+        transition: all 0.2s;
+
+        /* Offsets the outline for a bordered effect on hover */
         outline-offset: 2rem;
 
-        &--p1{
+        /* Responsive adjustments for tablet-sized screens */
+        @include respond(tab-port) {
+            /* Floats the photos to the left on smaller screens */
+            float: left;
+
+            /* Changes to relative positioning for better flow */
+            position: relative;
+
+            /* Adjusts width to one-third of the container on tablets */
+            width: 33.3333333%;
+
+            /* Reduces shadow for a less intense effect on smaller screens */
+            box-shadow: 0 1.5rem 3rem rgba($color-black, 0.2);
+        }
+
+        /* Positioning for the first photo in the composition */
+        &--p1 {
+            /* Positions photo on the left side and shifts it slightly up */
             left: 0;
             top: -2rem;
+
+            /* Tablet view adjustments: resets top position and scales up */
+            @include respond(tab-port) {
+                top: 0;
+                transform: scale(1.2);
+            }
         }
-        &--p2{
+
+        /* Positioning for the second photo in the composition */
+        &--p2 {
+            /* Positions photo on the right side and shifts it slightly down */
             right: 0;
             top: 2rem;
+
+            /* Tablet view adjustments: shifts top position up and scales up */
+            @include respond(tab-port) {
+                top: -1rem;
+                transform: scale(1.3);
+            }
         }
-        &--p3{
+
+        /* Positioning for the third photo in the composition */
+        &--p3 {
+            /* Positions photo towards the center and shifts it down */
             left: 20%;
             top: 10rem;
+
+            /* Tablet view adjustments: aligns to the left and scales up */
+            @include respond(tab-port) {
+                top: 1rem;
+                left: 0;
+                transform: scale(1.1);
+            }
         }
 
+        /* Hover effect for individual photos */
         &:hover {
+            /* Adds an outline around the photo on hover */
             outline: 1.5rem solid $color-primary;
-            transform: scale(1.05) translateY(-.5rem);
-            box-shadow: 0 2.5rem 4rem rgba($color-black , .5);
+
+            /* Scales up and lifts the photo slightly */
+            transform: scale(1.05) translateY(-0.5rem);
+
+            /* Increases shadow for a more prominent 3D effect */
+            box-shadow: 0 2.5rem 4rem rgba($color-black, 0.5);
+
+            /* Raises z-index to make hovered photo appear on top */
             z-index: 20;
         }
-
-    
     }
-    &:hover &__photo:not(:hover){
-        transform: scale(.95);
 
+    /* Hover effect for the entire composition container */
+    &:hover &__photo:not(:hover) {
+        /* Slightly scales down non-hovered photos to emphasize the hovered one */
+        transform: scale(0.95);
     }
 }

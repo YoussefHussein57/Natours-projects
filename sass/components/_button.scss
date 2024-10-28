@@ -1,105 +1,168 @@
-.btn{
-    &,
-    &:link,
-&:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    display: inline-block;
-    border-radius: 10rem;
-    transition: all .2s ;
-    position: relative;
-    font-size: 1.6rem;
+.btn {
+    /* Styles for all button states (normal, link, and visited) */
+    &, &:link, &:visited {
+        /* Transforms text to uppercase */
+        text-transform: uppercase;
 
-    //change for button element
-    border: none;
-    cursor: point er;
-
-}
-&:hover {
-    transform: translateY(-.3rem);
-    box-shadow: 0 1rem 2rem rgba($color-black,.2);
-
-    &::after {
-        transform: scaleX(1.4) scaleY(1.6);
-        opacity: 0;
-    }
-}
-
-&:active,
-&:focus {
-    outline: none;
-    transform: translateY(-1px);
-    box-shadow: 0 .5rem 1rem rgba($color-black,.2);
-}
-
-&--white{
-    background-color: $color-white;
-    color: $color-gray-dark;
-  
-
-    &::after{
-        background-color:$color-white ;
-        
-    }
-}
-
-&--green{
-    background-color: $color-primary;
-    color: $color-white;
-    &::after{
-        background-color:$color-primary ;
-        
-    }
-}
-&::after {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 100px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all .4s;
-}
-
-
-
-
-
-&--animated{
-    animation: moveInBottom .5s ease-out .75s;
-    animation-fill-mode:backwards;
-}
-
-
-}
-
-
-.btn-text{
-    &:link,
-    &:visited{
-        font-size: $default-font-size;
-        color: $color-primary;
-        display: inline-block;
+        /* Removes default text decoration */
         text-decoration: none;
-        border-bottom: 1px solid $color-primary;
-        padding: 3px;
-        transition: all .2s;
 
+        /* Adds padding inside the button */
+        padding: 1.5rem 4rem;
+
+        /* Makes the button inline-block to allow padding */
+        display: inline-block;
+
+        /* Gives the button rounded corners */
+        border-radius: 10rem;
+
+        /* Adds a smooth transition effect */
+        transition: all 0.2s;
+
+        /* Sets the position relative to enable pseudo-elements positioning */
+        position: relative;
+
+        /* Sets the font size of the button text */
+        font-size: 1.6rem;
+
+        /* Removes the default border on buttons */
+        border: none;
+
+        /* Changes the cursor to a pointer on hover */
+        cursor: pointer;
     }
-    &:hover{
+
+    /* Hover effect for the button */
+    &:hover {
+        /* Slightly moves the button up for a 3D effect */
+        transform: translateY(-0.3rem);
+
+        /* Adds a shadow around the button for a floating effect */
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+        &::after {
+            /* Expands and fades out the after pseudo-element on hover */
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+
+    /* Active and focus states for accessibility */
+    &:active, &:focus {
+        /* Removes the outline for a cleaner look */
+        outline: none;
+
+        /* Slightly reduces the height of the shadow on click */
+        transform: translateY(-1px);
+
+        /* Reduces shadow for a pressed effect */
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+    }
+
+    /* White button modifier */
+    &--white {
+        /* White background and dark gray text */
+        background-color: $color-white;
+        color: $color-gray-dark;
+
+        &::after {
+            /* White background for the after pseudo-element */
+            background-color: $color-white;
+        }
+    }
+
+    /* Green button modifier */
+    &--green {
+        /* Primary green background with white text */
         background-color: $color-primary;
         color: $color-white;
-        box-shadow: 0 1rem 2rem rgba($color-black, .15) ;
-        transform: translateY(-2px);
 
+        &::after {
+            /* Matches after pseudo-element background to primary color */
+            background-color: $color-primary;
+        }
     }
-    &:active{
-        box-shadow: 0 .5rem 1rem rgba($color-black, .15) ;
+
+    /* After pseudo-element for hover effects */
+    &::after {
+        /* Empty content to create a custom background */
+        content: "";
+
+        /* Inline-block to take up space inside button */
+        display: inline-block;
+
+        /* Matches button dimensions for full coverage */
+        height: 100%;
+        width: 100%;
+
+        /* Rounded corners */
+        border-radius: 100px;
+
+        /* Positioned absolutely to cover button */
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        /* Places pseudo-element behind button text */
+        z-index: -1;
+
+        /* Smooth transition for hover effects */
+        transition: all 0.4s;
+    }
+
+    /* Animated button modifier */
+    &--animated {
+        /* Applies a custom animation */
+        animation: moveInBottom 0.5s ease-out 0.75s;
+
+        /* Ensures animation begins before the initial state */
+        animation-fill-mode: backwards;
+    }
+}
+
+/* Styles for a text-only button */
+.btn-text {
+    /* Link and visited states for text button */
+    &:link, &:visited {
+        /* Sets the default font size */
+        font-size: $default-font-size;
+
+        /* Primary color for text */
+        color: $color-primary;
+
+        /* Displays inline-block to apply padding */
+        display: inline-block;
+
+        /* Removes underline from text */
+        text-decoration: none;
+
+        /* Adds a border below text for a button look */
+        border-bottom: 1px solid $color-primary;
+
+        /* Adds small padding for spacing */
+        padding: 3px;
+
+        /* Smooth transition for hover effects */
+        transition: all 0.2s;
+    }
+
+    /* Hover state for text button */
+    &:hover {
+        /* Background and text color switch for emphasis */
+        background-color: $color-primary;
+        color: $color-white;
+
+        /* Adds a light shadow for a floating effect */
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+
+        /* Moves the text button up slightly */
+        transform: translateY(-2px);
+    }
+
+    /* Active state for text button */
+    &:active {
+        /* Reduces shadow and resets position */
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.15);
         transform: translateY(0);
     }
-
 }

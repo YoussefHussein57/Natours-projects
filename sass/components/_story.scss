@@ -1,56 +1,124 @@
-.story{
+.story {
+    /* Sets the width of the story container to 75% and centers it */
     width: 75%;
     margin: 0 auto;
-    box-shadow: 0 3rem 6rem rgba($color-black , .1);
-    background-color: rgba($color-white , .6);
+
+    /* Adds a shadow for a floating effect */
+    box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+
+    /* Semi-transparent white background */
+    background-color: rgba($color-white, 0.6);
+
+    /* Rounds the corners */
     border-radius: 3px;
+
+    /* Adds padding around content */
     padding: 6rem;
     padding-left: 9rem;
+
+    /* Sets the font size for text inside the story */
     font-size: $default-font-size;
+
+    /* Skews the story box to the left */
     transform: skewX(-12deg);
 
+    /* Responsive adjustments for tablet-sized screens */
+    @include respond(tab-port) {
+        /* Full-width for smaller screens */
+        width: 100%;
 
+        /* Adjusts padding */
+        padding-left: 7rem;
+        padding: 4rem;
+    }
 
-    &__shape{
+    /* Resets skew for smaller phone screens */
+    @include respond(phone) {
+        transform: skewX(0);
+    }
+
+    &__shape {
+        /* Sets dimensions for the shape that holds the image */
         width: 15rem;
         height: 15rem;
+
+        /* Floats shape to the left of the text */
         float: left;
+
+        /* Makes the shape circular and positions it inside the container */
         -webkit-shape-outside: circle(50% at 50% 50%);
         shape-outside: circle(50% at 50% 50%);
-        -webkit-clip-path:circle(50% at 50% 50%) ;
-        clip-path:circle(50% at 50% 50%) ;
+
+        /* Clips the image to the circular shape */
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+
+        /* Moves the shape slightly to the left and applies skew */
         transform: translateX(-3rem) skewX(12deg);
         position: relative;
+
+        /* Resets skew on smaller screens */
+        @include respond(phone) {
+            transform: translateX(-2rem) skewX(0);
+        }
     }
 
-    &__img{
+    &__img {
+        /* Makes the image fill the shape's height */
         height: 100%;
-        transform: translateX(-4rem) scale(1.4);
-        transition: all .5s;
 
+        /* Translates and scales the image */
+        transform: translateX(-4rem) scale(1.4);
+
+        /* Smooth transition effect for image transformations */
+        transition: all 0.5s;
     }
-    &__text{
+
+    &__text {
+        /* Applies skew to text within the story container */
         transform: skewX(12deg);
+
+        /* Resets skew on smaller screens */
+        @include respond(phone) {
+            transform: skewX(0);
+        }
     }
+
     &__caption {
+        /* Positions caption within the shape container */
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50% , 20%);
+
+        /* Centers caption within the shape */
+        transform: translate(-50%, 20%);
+
+        /* Makes text uppercase, white, and centered */
         text-transform: uppercase;
         color: $color-white;
         font-size: 1.7rem;
         text-align: center;
+
+        /* Initially hidden with zero opacity */
         opacity: 0;
-        transition: all .5s;
+
+        /* Smooth transition for hover effect */
+        transition: all 0.5s;
+
+        /* Hides backface to avoid display issues on rotation */
         backface-visibility: hidden;
     }
+
+    /* Shows caption on hover */
     &:hover &__caption {
+        /* Fully visible and centered on hover */
         opacity: 1;
-        transform: translate( -50%,-50%);
+        transform: translate(-50%, -50%);
     }
 
-    &:hover &__img{
+    /* Hover effect for image */
+    &:hover &__img {
+        /* Resets scaling and adds blur and dimming effect */
         transform: translateX(-4rem) scale(1);
         filter: blur(3px) brightness(80%);
     }

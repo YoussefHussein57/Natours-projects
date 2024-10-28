@@ -1,24 +1,61 @@
-.feature-box{
-    background-color: rgba($color-white, .8);
+.feature-box {
+    /* Semi-transparent white background for the feature box */
+    background-color: rgba($color-white, 0.8);
+
+    /* Sets the font size for content within the feature box */
     font-size: 1.5rem;
+
+    /* Adds padding around the content inside the feature box */
     padding: 2.5rem;
+
+    /* Centers the text within the feature box */
     text-align: center;
+
+    /* Rounds the corners of the feature box */
     border-radius: 3px;
-    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
-    transition: transform .2s;
-    &__icon{
+
+    /* Adds a shadow for a 3D effect */
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+    /* Smooth transition for transform effects */
+    transition: transform 0.2s;
+
+    /* Responsive padding adjustment for tablets */
+    @include respond(tab-port) {
+        padding: 2rem;
+    }
+
+    &__icon {
+        /* Sets a large font size for the icon */
         font-size: 6rem;
-        margin-bottom: .5rem;
+
+        /* Adds spacing below the icon */
+        margin-bottom: 0.5rem;
+
+        /* Displays the icon inline-block to apply custom styles */
         display: inline-block;
-        background-image: linear-gradient(to right , $color-primary-light, $color-primary-dark);
+
+        /* Adds a gradient as the icon’s background */
+        background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+
+        /* Clips the background to the text to create a gradient text effect */
         -webkit-background-clip: text;
+
+        /* Makes the text transparent, revealing the gradient */
         color: transparent;
 
+        /* Responsive adjustment to remove the margin below the icon on tablets */
+        @include respond(tab-port) {
+            margin-bottom: 0;
+        }
     }
 
+    /* Hover effect for the entire feature box */
     &:hover {
-        box-shadow: 0 1.5rem 4rem rgba($color-black, .8);
+        /* Intensifies the shadow for a more pronounced 3D effect */
+        box-shadow: 0 1.5rem 4rem rgba($color-black, 0.8);
+
+        /* Moves the box up and slightly scales it for a floating effect */
         transform: translateY(-1.5rem) scale(1.03);
     }
-
 }

@@ -1,15 +1,27 @@
-.bg-video{
+.bg-video {
+    /* Sets the video container to an absolute position relative to its nearest positioned ancestor */
     position: absolute;
+
+    /* Positions the container at the top-left corner */
     top: 0;
     left: 0;
+
+    /* Makes the video container take up the full height and width of its parent element */
     height: 100%;
     width: 100%;
+
+    /* Places the video container behind other elements with a lower z-index */
     z-index: -1;
+
+    /* Sets the opacity to 15%, making the video appear as a faint background */
     opacity: .15;
 
-    &__content{
+    &__content {
+        /* Ensures the video content fills the container's height and width */
         height: 100%;
         width: 100%;
+
+        /* Maintains the video's aspect ratio while covering the entire container */
         object-fit: cover;
     }
 }

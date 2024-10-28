@@ -1,98 +1,162 @@
-.form{
-    &__group:not(:last-child){
+.form {
+    /* Adds bottom margin to all form groups except the last one */
+    &__group:not(:last-child) {
         margin-bottom: 2rem;
-
     }
-    &__label{
+
+    &__label {
+        /* Styles for form labels */
         font-size: 1.2rem;
         font-weight: 700;
         margin-left: 2rem;
-        margin-top: .7rem;
-        display: block;
-        transition: all .3s;
+        margin-top: 0.7rem;
 
+        /* Displays labels as block elements */
+        display: block;
+
+        /* Smooth transition for label animations */
+        transition: all 0.3s;
     }
-    &__input{
+
+    &__input {
+        /* Adds padding inside the input field */
         padding: 1.5rem 2rem;
+
+        /* Inherits font styles from parent */
         font-family: inherit;
         color: inherit;
+
+        /* Sets the input's font size */
         font-size: 1.5rem;
+
+        /* Rounds the corners slightly */
         border-radius: 2px;
-        background-color: rgba($color-white , .5);
+
+        /* Semi-transparent white background */
+        background-color: rgba($color-white, 0.5);
+
+        /* Removes default border and adds a transparent bottom border */
         border: none;
         border-bottom: 3px solid transparent;
+
+        /* Sets input width to 90% */
         width: 90%;
+
+        /* Displays input as a block element */
         display: block;
-        transition: all .3s;
 
-        &:focus{
+        /* Smooth transition for border and shadow changes */
+        transition: all 0.3s;
+
+        /* Responsive input width adjustment for tablets */
+        @include respond(tab-port) {
+            width: 100%;
+        }
+
+        &:focus {
+            /* Removes default outline */
             outline: none;
-            box-shadow: 0 1rem 2rem rgba($color-black , .1);
+
+            /* Adds shadow on focus */
+            box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+
+            /* Changes bottom border color on focus */
             border-bottom: 3px solid $color-primary;
-           
         }
 
-        &:focus:invalid{
-            border-bottom: 3px solid $color-secondary-dark ;
+        /* Changes bottom border color if input is invalid */
+        &:focus:invalid {
+            border-bottom: 3px solid $color-secondary-dark;
         }
-        
-    &::-webkit-input-placeholder{
-        color: $color-gray-dark-2;
-    }
+
+        /* Placeholder styling */
+        &::-webkit-input-placeholder {
+            color: $color-gray-dark-2;
+        }
     }
 
-    &__input:placeholder-shown + &__label{
+    /* Animates label when the input's placeholder is shown */
+    &__input:placeholder-shown + &__label {
+        /* Makes label invisible and shifts it up */
         opacity: 0;
         visibility: hidden;
         transform: translateY(-4rem);
-
     }
-    &__radio-input{
+
+    /* Hides radio input elements */
+    &__radio-input {
         display: none;
     }
 
-    &__radio-group{
+    &__radio-group {
+        /* Sets width and displays each radio group inline */
         width: 49%;
         display: inline-block;
+
+        /* Makes radio labels uppercase */
         text-transform: uppercase;
+
+        /* Adjusts width and margin on tablets */
+        @include respond(tab-port) {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
     }
-    &__radio-label{
+
+    &__radio-label {
+        /* Font size for radio labels */
         font-size: $default-font-size;
+
+        /* Changes cursor to pointer */
         cursor: pointer;
+
+        /* Positions label relative to place radio button correctly */
         position: relative;
+
+        /* Adds left padding to create space for radio button */
         padding-left: 4.5rem;
     }
 
-    &__radio-button{
+    &__radio-button {
+        /* Sets size and border for custom radio button */
         height: 3rem;
         width: 3rem;
         border: 5px solid $color-primary;
-        border-radius: 50%;
-        display: inline-block ;
-        position: absolute;
-        left: 0 ;
-        top: -.4rem;
 
-        &::after{
+        /* Makes the button round */
+        border-radius: 50%;
+
+        /* Positions it relative to the label */
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: -0.4rem;
+
+        &::after {
+            /* Creates inner circle for selected state */
             content: '';
             display: block;
             height: 1.3rem;
             width: 1.3rem;
+
+            /* Centers inner circle within button */
             border-radius: 50%;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+
+            /* Primary color fill for inner circle */
             background-color: $color-primary;
+
+            /* Hidden by default; visible only when checked */
             opacity: 0;
-            transition: opacity .2s;
+            transition: opacity 0.2s;
         }
     }
 
-    &__radio-input:checked ~ &__radio-label &__radio-button::after{
+    /* Shows the inner circle of the radio button when selected */
+    &__radio-input:checked ~ &__radio-label &__radio-button::after {
         opacity: 1;
     }
-
-
-
 }

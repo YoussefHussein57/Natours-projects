@@ -1,87 +1,148 @@
 .popup {
-    background-color: rgba($color-black, 0.8);
+    /* Semi-transparent black background for popup overlay */
+    background-color: rgba($color-black, 0.3);
+
+    /* Shadow for added depth effect */
     box-shadow: 1rem 2rem 3rem $color-black;
+
+    /* Full-screen height and width */
     height: 100vh;
     width: 100%;
+
+    /* Fixes the popup to the viewport */
     position: fixed;
     top: 0;
     left: 0;
+
+    /* Sets a high z-index to overlay the popup above other content */
     z-index: 9999;
 
+    /* Initially hidden, with opacity and visibility to control appearance */
     opacity: 0;
     visibility: hidden;
-    transition: all .3s;
 
-   
+    /* Smooth transition effect for opacity and visibility */
+    transition: all 0.3s;
+
+    /* Blurs the background content behind the popup */
+    backdrop-filter: blur(10px);
 
     &__content {
+        /* Centers the popup content using a mixin (e.g., top: 50%; left: 50%;) */
         @include absCenter;
-        width: 75%;
-        background-color: $color-white;
-        box-shadow: 0rem 2rem 4rem rgba($color-black, 0.2);
-        border-radius: 3px;
-        display: table;
-        overflow: hidden;
-        opacity: 0;
-        transform: translate(-50% , -50%) scale(0);
-        transition: all .4s .2s;
-    }
 
+        /* Width of the content box relative to the viewport */
+        width: 75%;
+
+        /* White background for popup content */
+        background-color: $color-white;
+
+        /* Adds a subtle shadow for a 3D effect */
+        box-shadow: 0rem 2rem 4rem rgba($color-black, 0.2);
+
+        /* Rounds the corners */
+        border-radius: 3px;
+
+        /* Displays content as a table to allow table-cell layout for children */
+        display: table;
+
+        /* Ensures any overflowing content remains inside the box */
+        overflow: hidden;
+
+        /* Initially hidden and scaled down */
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+
+        /* Delayed transition for a fade-in and scale effect */
+        transition: all 0.4s 0.2s;
+    }
 
     &__left {
+        /* Left section takes up one-third of the width */
         width: 33.333333%;
+        
+        /* Displays left section as a table cell for side-by-side alignment */
         display: table-cell;
     }
 
-    
-
     &__right {
+        /* Right section takes up two-thirds of the width */
         width: 65%;
+
+        /* Aligns content to the middle of the cell */
         display: table-cell;
         vertical-align: middle;
-        padding: 3rem 5rem;
 
+        /* Padding for spacing around the content */
+        padding: 3rem 5rem;
     }
 
     &__img {
+        /* Ensures images are block elements and take full width of the container */
         display: block;
         width: 100%;
     }
 
     &__text {
+        /* Sets font size for text in the popup */
         font-size: 1.4rem;
+
+        /* Bottom margin to separate from other content */
         margin-bottom: 4rem;
 
+        /* Creates two columns for text layout */
         column-count: 2;
+        
+        /* Space between columns */
         column-gap: 4rem;
+
+        /* Adds a rule between columns */
         column-rule: 1px solid $color-grey-light-2;
+
+        /* Enables automatic hyphenation for better text flow */
         hyphens: auto;
     }
 
-    &:target &__content{
+    /* When the popup is targeted (e.g., through an anchor link), display it */
+    &:target &__content {
+        /* Fully opaque and scaled to original size */
         opacity: 1;
-        transform: translate(-50% , -50%) scale(1);
+        transform: translate(-50%, -50%) scale(1);
     }
 
-    &:target{
+    &:target {
+        /* Shows the popup background overlay */
         opacity: 1;
         visibility: visible;
     }
 
-    &__close{
+    &__close {
+        /* Styling for the close button in both link and visited states */
         &:link,
-        &:visited{
-        color: $color-gray-dark;
-        position: absolute;
-        top: 2.5rem;
-        right: 2.5rem;
-        font-size: 3rem;
-        text-decoration: none;
-        display: inline-block;
-        line-height: 1;
+        &:visited {
+            /* Dark gray color for the close icon */
+            color: $color-gray-dark;
+
+            /* Positions the close icon in the top-right corner */
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+
+            /* Sets the font size for the close icon */
+            font-size: 3rem;
+
+            /* Removes underline */
+            text-decoration: none;
+
+            /* Ensures the close button appears inline */
+            display: inline-block;
+
+            /* Keeps line height compact */
+            line-height: 1;
         }
 
-        &:hover{
+        &:hover {
+            /* Changes color on hover for a highlighted effect */
             color: $color-primary;
         }
     }
